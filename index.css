@@ -1,0 +1,42 @@
+.outer-container {
+  container-type: size;
+}
+
+.inner-container {
+  display: grid;
+  --100cqw: 100cqw;
+  --100cqh: 100cqh;
+  --r: tan(atan2(var(--100cqh), var(--100cqw) / var(--cell-ratio)));
+  --g: round(down, sqrt(var(--n) * var(--r)));
+  --x1: round(up, sqrt(var(--n) / var(--r)));
+  --d1: max(0, min(1, round(up, round(up, var(--n) / var(--x1)) - var(--x1) * var(--r))));
+  --x2: (var(--n) / max(1, round(up, var(--n) / var(--x1) - 1)));
+  --x3: (var(--x1) * round(up, var(--n) / var(--x1)) / (var(--x1) * var(--r)));
+  --x4: round(up, min(var(--x2), var(--x3)));
+  --d2: (var(--x4) - var(--x1));
+  --x5: (var(--x1) + var(--d1) * var(--d2));
+  grid-template-columns: repeat(calc(var(--x5)), 1fr);
+}
+
+.inner-container > * {
+  aspect-ratio: var(--cell-ratio);
+  overflow: hidden;
+}
+
+@property --100cqw {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --100cqh {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --cell-ratio {
+  syntax: "<number>";
+  initial-value: 1;
+  inherits: false;
+}
