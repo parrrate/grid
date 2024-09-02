@@ -7,7 +7,6 @@
   --100cqw: 100cqw;
   --100cqh: 100cqh;
   --r: tan(atan2(var(--100cqh), var(--100cqw) / var(--cell-ratio)));
-  --g: round(down, sqrt(var(--n) * var(--r)));
   --x1: round(up, sqrt(var(--n) / var(--r)));
   --d1: max(0, round(up, round(up, var(--n) / var(--x1)) - var(--x1) * var(--r)));
   --x2: (var(--n) / max(1, round(up, var(--n) / var(--x1) - 1)));
