@@ -9,7 +9,7 @@
   --r: tan(atan2(var(--100cqh), var(--100cqw) / var(--cell-ratio)));
   --x1: round(up, sqrt(var(--n) / var(--r)));
   --d1: max(0, round(up, round(up, var(--n) / var(--x1)) - var(--x1) * var(--r)));
-  --x2: (var(--n) / max(1, round(up, var(--n) / var(--x1) - 1)));
+  --x2: (var(--n) / max(0, round(up, var(--n) / var(--x1) - 1)));
   --x3: (round(up, var(--n) / var(--x1)) / var(--r));
   --x4: round(up, min(var(--x2), var(--x3)));
   --d2: (var(--x4) - var(--x1));
