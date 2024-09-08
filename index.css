@@ -37,5 +37,5 @@
 @property --cell-ratio {
   syntax: "<number>";
   initial-value: 1;
-  inherits: false;
+  inherits: true;
 }
