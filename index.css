@@ -13,12 +13,21 @@
   --x3: (round(up, var(--n) / var(--x1)) / var(--r));
   --x4: round(up, min(var(--x2), var(--x3)));
   --d2: (var(--x4) - var(--x1));
-  --x5: (var(--x1) + var(--d1) * var(--d2));
-  grid-template-columns: repeat(calc(var(--x5)), 1fr);
+  --cols-fits: calc(var(--x1) + var(--d1) * var(--d2));
+  /* neither `hypot` nor `abs` worked at the time of writing */
+  --stretch: calc(0.5 + 0.5 * (sqrt(pow(var(--cols-fits) - 3, 2)) - sqrt(pow(var(--cols-fits) - 4, 2))));
+  /* --stretch: calc(1); */
+  /* --stretch: calc(0.0); */
+  --cols: calc(max(1, var(--cols-fits) - var(--stretch)));
+  --rows: calc(round(up, var(--n) / var(--cols)));
+  grid-template-columns: repeat(calc(var(--cols)), 1fr);
+  grid-template-rows: repeat(var(--rows), 1fr);
+  --cell: calc(var(--100cqw) / var(--cols));
+  --height: calc(min(var(--cell) * var(--rows) / var(--cell-ratio), var(--100cqh)));
+  height: calc(var(--height));
 }
 
 .inner-container > * {
-  aspect-ratio: var(--cell-ratio);
   overflow: hidden;
 }
 
